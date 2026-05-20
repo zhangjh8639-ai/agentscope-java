@@ -23,6 +23,7 @@ import static io.agentscope.examples.harness.common.util.ExampleUtils.startChat;
 import io.agentscope.core.agent.RuntimeContext;
 import io.agentscope.core.model.DashScopeChatModel;
 import io.agentscope.core.model.Model;
+import io.agentscope.core.model.OpenAIChatModel;
 import io.agentscope.harness.agent.HarnessAgent;
 import io.agentscope.harness.agent.memory.compaction.CompactionConfig;
 import java.nio.file.Files;
@@ -68,9 +69,9 @@ public class QuickstartExample {
         initWorkspaceIfAbsent(workspace);
 
         // 2. Model
-        String apiKey = getDashScopeApiKey();
+        // String apiKey = getDashScopeApiKey();
         Model model =
-                DashScopeChatModel.builder().apiKey(apiKey).modelName("qwen-max").stream(true)
+                OpenAIChatModel.builder().baseUrl("https://api.deepseek.com").apiKey("sk-af913dc7b3af4513892eef6d7a817896").modelName("deepseek-v4-flash").stream(true)
                         .build();
 
         // 3. HarnessAgent — workspace injection / session persistence / agent tracing are
